@@ -38,6 +38,7 @@ public class Character extends PrimaryAttribute{
     }
 
     public void levelUp(){
+
         Integer level = 1 + getLevel();
         setLevel(level);
 

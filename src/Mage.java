@@ -26,6 +26,7 @@ public class Mage extends Character{
         Integer strength = 1 + getStrength();
         Integer dexterity = 1 + getDexterity();
         Integer intelligence = 5 + getIntelligence();
+
         super.setBaseAttribtues(strength, dexterity, intelligence, getVitality());
 
     }

@@ -8,6 +8,15 @@ public class Ranger extends Character{
         super.setIntelligence(1);
     }
 
+    public Ranger() {
+
+        //The default attributes at level 1 for mage
+        super.setStrength(1);
+        super.setDexterity(7);
+        super.setIntelligence(1);
+
+    }
+
     public void levelUp() {
         super.levelUp();
 
