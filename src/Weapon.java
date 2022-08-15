@@ -1,4 +1,4 @@
-public class Weapon extends Item implements Weapons{
+public class Weapon extends Item implements Weapons {
 
     private Integer damage = 0;
     private double attacksPerSecond = 0.0;

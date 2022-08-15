@@ -1,4 +1,4 @@
-public abstract class Item {
+public abstract class Item implements Slots{
 
     //private Integer setLevel;
     private String name;

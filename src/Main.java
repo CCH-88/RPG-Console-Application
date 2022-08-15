@@ -7,7 +7,7 @@ public class Main {
         //testWeapon.setWeaponType(Weapons.WeaponType.AXE);
         testWeapon.calculateDamagePerSecond(4,2);
 
-        System.out.println(testWeapon.getAttacksPerSecond());
+        System.out.println(testWeapon.getCalculatedDPS());
 
 
 
