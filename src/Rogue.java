@@ -8,6 +8,15 @@ public class Rogue extends Character{
         super.setIntelligence(1);
     }
 
+    Rogue(){
+
+        //The default attributes at level 1 for Rogue
+        super.setStrength(2);
+        super.setDexterity(6);
+        super.setIntelligence(1);
+    }
+
+    @Override
     public void levelUp() {
         super.levelUp();
 
