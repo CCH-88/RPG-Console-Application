@@ -41,7 +41,6 @@ public class Character extends PrimaryAttribute{
 
         Integer level = 1 + getLevel();
         setLevel(level);
-
     }
 
 }
