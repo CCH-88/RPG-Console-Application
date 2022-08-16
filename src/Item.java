@@ -1,10 +1,13 @@
-public abstract class Item implements Slots{
+public abstract class Item {
+
 
     //private Integer setLevel;
     private String name;
     private Integer requiredLvl;
 
-    //private String slotType;
+    Slot aSlot;
+
+
 
     Item(String name, Integer requiredLvl){
 
@@ -26,14 +29,6 @@ public abstract class Item implements Slots{
 
     }
 
-    public void setSlotType(){
-
-    }
-
-    public String getSlotType() {
-        return slotType;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -42,15 +37,15 @@ public abstract class Item implements Slots{
         this.requiredLvl = requiredLvl;
     }
 
-    public void setSlotType(String slotType) {
-        this.slotType = slotType;
-    }
-
     public String getName() {
         return name;
     }
 
     public Integer getRequiredLvl() {
         return requiredLvl;
+    }
+
+    public void setSlot(Slot aSlot) {
+        this.aSlot = aSlot;
     }
 }

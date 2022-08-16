@@ -1,12 +1,16 @@
-public class Weapon extends Item implements Weapons {
+public class Weapon extends Item {
 
     private Integer damage = 0;
     private double attacksPerSecond = 0.0;
 
     private double calculatedDPS = 0;
 
+    WeaponType weaponType;
+
     Weapon(String name, Integer requiredLvl) {
         super(name, requiredLvl);
+
+
     }
 
     public Weapon() {
@@ -42,5 +46,11 @@ public class Weapon extends Item implements Weapons {
 
     public void setAttacksPerSecond(double attacksPerSecond) {
         this.attacksPerSecond = attacksPerSecond;
+    }
+
+    public void setWeaponType(WeaponType weaponType){
+
+        this.weaponType = weaponType;
+
     }
 }

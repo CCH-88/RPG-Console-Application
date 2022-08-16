@@ -20,10 +20,11 @@ public class PrimaryAttribute {
 
     }
 
-    public void setBaseAttribtues(Integer baseStrength, Integer baseDexterity, Integer baseIntelligence, Integer vitality){
+    public void setBaseAttribtues(Integer baseStrength, Integer baseDexterity, Integer baseIntelligence, Integer baseVitality){
         this.strength = baseStrength;
         this.dexterity = baseDexterity;
         this.intelligence = baseIntelligence;
+        this.vitality = baseVitality;
     }
     public void setTotalAttribtues(Integer totalStrength, Integer totalDexterity, Integer totalIntelligence){
         this.totalStrength = totalStrength;

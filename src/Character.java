@@ -1,11 +1,13 @@
 import java.util.HashMap;
 
-public class Character extends PrimaryAttribute implements Slots{
+public class Character extends PrimaryAttribute {
 
     private String name;
     private Integer level;
 
-    private HashMap<Slots.SlotType,Item> slotItemHashMap;
+    private HashMap<Slot,Item> slotItemHashMap;
+
+    private Weapon aWeapon;
 
     Character(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
         super(strength, dexterity, intelligence, vitality);
@@ -18,12 +20,16 @@ public class Character extends PrimaryAttribute implements Slots{
 
         //All characters start at level 1
         setLevel(1);
-        slotItemHashMap = new HashMap<Slots.SlotType,Item>();
+        slotItemHashMap = new HashMap<Slot,Item>();
+        setSlotItemHashMap(slotItemHashMap);
+
+        //aWeapon = new Weapon();
     }
 
-    public void equipItem(){
+    public void equipItem(Slot aBody, Item anItem){
 
-        HashMap<Slots.SlotType,Item> slotItemHashMap;
+
+        getSlotItemHashMap();
 
     }
     public void setName(String name) {
@@ -53,11 +59,11 @@ public class Character extends PrimaryAttribute implements Slots{
         setLevel(level);
     }
 
-    public HashMap<Slots.SlotType, Item> getSlotItemHashMap() {
+    public HashMap<Slot, Item> getSlotItemHashMap() {
         return slotItemHashMap;
     }
 
-    public void setSlotItemHashMap(HashMap<Slots.SlotType, Item> slotItem) {
+    public void setSlotItemHashMap(HashMap<Slot, Item> slotItem) {
         this.slotItemHashMap = slotItem;
     }
 }
