@@ -3,7 +3,8 @@ public abstract class Item implements Slots{
     //private Integer setLevel;
     private String name;
     private Integer requiredLvl;
-    private String slotType;
+
+    //private String slotType;
 
     Item(String name, Integer requiredLvl){
 
