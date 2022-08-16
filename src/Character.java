@@ -5,7 +5,7 @@ public class Character extends PrimaryAttribute {
     private String name;
     private Integer level;
 
-    private HashMap<Slot,Item> slotItemHashMap;
+    private HashMap<Slot, Item> slotItemHashMap;
 
     private Weapon aWeapon;
 
@@ -20,16 +20,21 @@ public class Character extends PrimaryAttribute {
 
         //All characters start at level 1
         setLevel(1);
-        slotItemHashMap = new HashMap<Slot,Item>();
+        slotItemHashMap = new HashMap<Slot, Item>();
         setSlotItemHashMap(slotItemHashMap);
 
         //aWeapon = new Weapon();
     }
 
-    public void equipItem(Slot aBody, Item anItem){
+    public boolean equipItem(Slot aBodyPart, Item anItem){
 
-
-        getSlotItemHashMap();
+        if (anItem.getRequiredLvl() > getLevel())
+        {
+            System.out.println("Weapon is too high level for the character");
+            return false;
+        }else
+            slotItemHashMap.put(aBodyPart, anItem);
+            return true;
 
     }
     public void setName(String name) {
