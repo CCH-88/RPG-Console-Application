@@ -8,23 +8,24 @@ public class Main {
         testWeapon.setWeaponType(WeaponType.STAFF);
         testWeapon.calculateDamagePerSecond(4,2);
 
-        Character aMage = new Mage();
+        /*Character aMage = new Mage();
         try {
             aMage.equipItem(Slot.WEAPON,testWeapon);
         } catch (InvalidWeaponException e) {
             throw new RuntimeException(e);
         } catch (InvalidArmorException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
         //System.out.println(testWeapon.getCalculatedDPS());
 
-        /*Armor testPlateBody = new Armor();
+        Armor testPlateBody = new Armor();
         testPlateBody.setName("Common Plate Body Armor");
         testPlateBody.setRequiredLvl(1);
         testPlateBody.setSlot(Slot.BODY);
         testPlateBody.setArmorType(ArmorType.CLOTH);
-        testPlateBody.setAttributes(new PrimaryAttribute(1,0,0,2));*/
+        testPlateBody.setArmorAttributes(new PrimaryAttribute(1,1,1,2));
+
 
         /*Character warrior = new Warrior();
         try {
@@ -37,7 +38,7 @@ public class Main {
 
         System.out.println(testPlateBody.getArmorType());*/
 
-        Character warrior = new Warrior();
+        /*Character warrior = new Warrior();
         warrior.setName("Barbarian");
         try {
             warrior.equipItem(Slot.WEAPON,testWeapon);
@@ -46,7 +47,8 @@ public class Main {
         } catch (InvalidArmorException e) {
             throw new RuntimeException(e);
         }
-        warrior.calculateCharacterDPS(Slot.WEAPON,testWeapon);
+        //warrior.calculateCharacterDPS(Slot.WEAPON,testWeapon);
+        warrior.calculateTotalAttributes(warrior.getTotalBaseAttributes(), warrior.getAllArmorAttributes());*/
 
 
     }

@@ -7,8 +7,6 @@ public class Character extends PrimaryAttribute {
 
     private HashMap<Slot, Item> slotItemHashMap;
 
-    //private Weapon aWeapon;
-
     Character(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
         super(strength, dexterity, intelligence, vitality);
 
@@ -23,7 +21,7 @@ public class Character extends PrimaryAttribute {
         slotItemHashMap = new HashMap<Slot, Item>();
         setSlotItemHashMap(slotItemHashMap);
 
-        //aWeapon = new Weapon();
+
     }
 
     public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
@@ -58,11 +56,6 @@ public class Character extends PrimaryAttribute {
         return level;
     }
 
-    //Josi made the damage method here....
-    public void doDamage(){
-
-    }
-
     public void levelUp(){
 
         Integer level = 1 + getLevel();
@@ -94,11 +87,27 @@ public class Character extends PrimaryAttribute {
         int totalAttributes = base + attributesFromAllEquippedArmor;
     }
 
-    public double calculateCharacterDPS(Weapon aWeapon, Character aCharacter){
+    /*public double calculateCharacterDPS(Weapon aWeapon, Character aCharacter){
         double characterDPS = aWeapon.getCalculatedDPS() * (1+aCharacter.getTotalMainPrimaryAttribute()/100);
 
         return characterDPS;
+    }*/
+
+    public int getAllArmorAttributes() {
+
+
+        int sum = 0;
+        for (Item anItem: getSlotItemHashMap().values()) {
+            if(anItem.getArmorType() == ArmorType.CLOTH || anItem.getArmorType() == ArmorType.LEATHER ||
+                    anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE) {
+
+                for (int a : anItem.) {
+                    sum += a;
+                }
+                return sum;
+            }
+
+        }
+
     }
-
-
 }

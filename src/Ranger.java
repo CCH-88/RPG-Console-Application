@@ -30,8 +30,9 @@ public class Ranger extends Character{
         Integer strength = 1 + getStrength();
         Integer dexterity = 5 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
+        Integer rangerMainPrimaryAttribute = dexterity;
 
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(),rangerMainPrimaryAttribute);
 
     }
     @Override

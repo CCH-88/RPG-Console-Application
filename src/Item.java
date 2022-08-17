@@ -24,14 +24,6 @@ public abstract class Item {
 
     }
 
-    /*public void equipItem(){
-
-    }*/
-
-    /*public void getItemsEquipped(){
-
-    }*/
-
     public void setName(String name) {
         this.name = name;
     }
@@ -73,7 +65,4 @@ public abstract class Item {
 
     }
 
-    boolean isInstance(Object object, Class<?> type) {
-        return type.isInstance(object);
-    }
 }

@@ -32,7 +32,8 @@ public class Mage extends Character{
         Integer strength = 3 + getStrength();
         Integer dexterity = 2 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
+        Integer mageMainPrimaryAttribute = intelligence;
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(),mageMainPrimaryAttribute);
 
     }
 

@@ -29,7 +29,8 @@ public class Rogue extends Character{
         Integer strength = 1 + getStrength();
         Integer dexterity = 4 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
+        Integer rogueMainPrimaryAttribute = dexterity;
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), rogueMainPrimaryAttribute);
 
     }
 

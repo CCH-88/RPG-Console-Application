@@ -29,7 +29,8 @@ public class Warrior extends Character{
         Integer strength = 3 + getStrength();
         Integer dexterity = 2 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
+        Integer warriorMainPrimaryAttribute = strength;
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), warriorMainPrimaryAttribute);
 
     }
 
