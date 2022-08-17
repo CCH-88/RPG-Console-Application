@@ -50,11 +50,12 @@ public class Warrior extends Character{
             if (anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE) {
 
                 return super.equipItem(aSlot, anItem);
-            } else {
+
+            } else if(anItem.getArmorType() != ArmorType.MAIL || anItem.getArmorType() != ArmorType.PLATE){
                 throw new InvalidWeaponException("Warriors cannot equip this type of armor. They can only equip armors of type mail and plate");
             }
         }
 
-
+        return true;
     }
 }

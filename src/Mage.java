@@ -49,15 +49,16 @@ public class Mage extends Character{
                 throw new InvalidWeaponException("Mage cannot equip this type of weapon. Choose either a staff or wand");
             }
         }
-        else{
+        else if (aSlot != Slot.WEAPON){
             if (anItem.getArmorType() == ArmorType.CLOTH) {
 
                 return super.equipItem(aSlot, anItem);
-            } else {
+
+            } else if (anItem.getArmorType() != ArmorType.CLOTH){
                 throw new InvalidWeaponException("Mage cannot equip this type of armor. Mages can only equip armors of type cloth");
             }
         }
 
-
+        return true;
     }
 }

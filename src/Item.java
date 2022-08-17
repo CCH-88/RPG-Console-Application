@@ -1,15 +1,23 @@
 public abstract class Item {
 
+    private Integer armorStrength;
 
-    //private Integer setLevel;
+    private Integer armorDexterity;
+
+    private Integer armorIntelligence;
+
+    private Integer armorVitality;
+
     private String name;
     private Integer requiredLvl;
+
+    private PrimaryAttribute armorAttributes;
+
     WeaponType weaponType;
 
     ArmorType armorType;
 
     Slot aSlot;
-
 
 
     Item(String name, Integer requiredLvl){
@@ -21,8 +29,19 @@ public abstract class Item {
     }
 
     public Item() {
+        armorAttributes = new PrimaryAttribute();
 
     }
+
+    public void setArmorAttributes(PrimaryAttribute armorAttributes) {
+        this.armorAttributes.setBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence(),armorAttributes.getVitality(), armorAttributes.getMainPrimaryAttribute());
+
+        setArmorStrength(armorAttributes.getStrength());
+        setArmorDexterity(armorAttributes.getDexterity());
+        setArmorIntelligence(armorAttributes.getIntelligence());
+
+    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -65,4 +84,40 @@ public abstract class Item {
 
     }
 
+    public Integer getArmorStrength() {
+        return armorStrength;
+    }
+
+    public void setArmorStrength(Integer armorStrength) {
+        this.armorStrength = armorStrength;
+    }
+
+    public Integer getArmorDexterity() {
+        return armorDexterity;
+    }
+
+    public void setArmorDexterity(Integer armorDexterity) {
+        this.armorDexterity = armorDexterity;
+    }
+
+    public Integer getArmorIntelligence() {
+        return armorIntelligence;
+    }
+
+    public void setArmorIntelligence(Integer armorIntelligence) {
+        this.armorIntelligence = armorIntelligence;
+    }
+
+    public Integer getArmorVitality() {
+        return armorVitality;
+    }
+
+    public void setArmorVitality(Integer armorVitality) {
+        this.armorVitality = armorVitality;
+    }
+
+    public int getTotalArmorAttribute() {
+        int totalArmorAttribute = getArmorStrength() + getArmorDexterity() + getArmorIntelligence();
+        return totalArmorAttribute;
+    }
 }

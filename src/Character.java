@@ -76,38 +76,40 @@ public class Character extends PrimaryAttribute {
 
     }
 
-    //Specify the slot and it returns the item in that slot.
     public Item getItem(Slot aSlot, Item anItem){
 
         return slotItemHashMap.get(aSlot);
 
     }
 
+    //Did not finish in time
     public void calculateTotalAttributes(int base, int attributesFromAllEquippedArmor){
         int totalAttributes = base + attributesFromAllEquippedArmor;
     }
 
+    //Did not finish in time
     /*public double calculateCharacterDPS(Weapon aWeapon, Character aCharacter){
         double characterDPS = aWeapon.getCalculatedDPS() * (1+aCharacter.getTotalMainPrimaryAttribute()/100);
 
         return characterDPS;
     }*/
 
+    //Did not finish in time
     public int getAllArmorAttributes() {
 
 
         int sum = 0;
         for (Item anItem: getSlotItemHashMap().values()) {
             if(anItem.getArmorType() == ArmorType.CLOTH || anItem.getArmorType() == ArmorType.LEATHER ||
-                    anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE) {
+                    anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE && anItem != null) {
 
-                for (int a : anItem.) {
-                    sum += a;
-                }
+                sum += anItem.getTotalArmorAttribute();
+
                 return sum;
             }
 
         }
 
+        return sum;
     }
 }

@@ -6,13 +6,6 @@ public class Weapon extends Item {
     private double calculatedDPS = 0;
 
 
-
-    Weapon(String name, Integer requiredLvl) {
-        super(name, requiredLvl);
-
-
-    }
-
     public Weapon() {
         super();
     }

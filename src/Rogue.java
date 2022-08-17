@@ -50,11 +50,11 @@ public class Rogue extends Character{
             if (anItem.getArmorType() == ArmorType.LEATHER || anItem.getArmorType() == ArmorType.MAIL) {
 
                 return super.equipItem(aSlot, anItem);
-            } else {
+            } else if (anItem.getArmorType() != ArmorType.LEATHER || anItem.getArmorType() != ArmorType.MAIL){
                 throw new InvalidWeaponException("Rogues cannot equip this type of armor. They can only equip armors of type leather and mail");
             }
         }
-
+        return true;
 
     }
 }
