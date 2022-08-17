@@ -8,6 +8,9 @@ public class Mage extends Character{
         super.setStrength(1);
         super.setDexterity(1);
         super.setIntelligence(8);
+
+        //The main primary attribute of Mage
+        super.setMainPrimaryAttribute(getIntelligence());
     }
 
     Mage(){
@@ -16,6 +19,9 @@ public class Mage extends Character{
         super.setStrength(1);
         super.setDexterity(1);
         super.setIntelligence(8);
+
+        //The main primary attribute of Mage
+        super.setMainPrimaryAttribute(getIntelligence());
 
     }
 
@@ -26,7 +32,7 @@ public class Mage extends Character{
         Integer strength = 3 + getStrength();
         Integer dexterity = 2 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality());
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
 
     }
 

@@ -5,6 +5,8 @@ public class PrimaryAttribute {
     private Integer intelligence;
     private Integer vitality;
 
+    private Integer mainPrimaryAttribute;
+
     private Integer totalStrength;
     private Integer totalDexterity;
     private Integer totalIntelligence;
@@ -20,11 +22,12 @@ public class PrimaryAttribute {
 
     }
 
-    public void setBaseAttribtues(Integer baseStrength, Integer baseDexterity, Integer baseIntelligence, Integer baseVitality){
+    public void setBaseAttribtues(Integer baseStrength, Integer baseDexterity, Integer baseIntelligence, Integer baseVitality, Integer mainPrimaryAttribute){
         this.strength = baseStrength;
         this.dexterity = baseDexterity;
         this.intelligence = baseIntelligence;
         this.vitality = baseVitality;
+        this.mainPrimaryAttribute = mainPrimaryAttribute;
     }
     public void setTotalAttribtues(Integer totalStrength, Integer totalDexterity, Integer totalIntelligence){
         this.totalStrength = totalStrength;
@@ -62,5 +65,16 @@ public class PrimaryAttribute {
 
     public void setVitality(Integer vitality) {
         this.vitality = vitality;
+    }
+
+    protected int getTotalMainPrimaryAttribute() {
+    }
+
+    public Integer getMainPrimaryAttribute() {
+        return mainPrimaryAttribute;
+    }
+
+    public void setMainPrimaryAttribute(Integer mainPrimaryAttribute) {
+        this.mainPrimaryAttribute = mainPrimaryAttribute;
     }
 }

@@ -16,7 +16,7 @@ public class Armor extends Item{
     }*/
 
     public void setAttributes(PrimaryAttribute armorAttributes) {
-        this.armorAttributes.setBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence(),armorAttributes.getVitality());
+        this.armorAttributes.setBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence(),armorAttributes.getVitality(), );
 
 
 

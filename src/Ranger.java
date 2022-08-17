@@ -6,6 +6,9 @@ public class Ranger extends Character{
         super.setStrength(1);
         super.setDexterity(7);
         super.setIntelligence(1);
+
+        //The main primary attribute of Ranger
+        super.setMainPrimaryAttribute(getDexterity());
     }
 
     public Ranger() {
@@ -14,6 +17,9 @@ public class Ranger extends Character{
         super.setStrength(1);
         super.setDexterity(7);
         super.setIntelligence(1);
+
+        //The main primary attribute of Ranger
+        super.setMainPrimaryAttribute(getDexterity());
 
     }
 
@@ -25,7 +31,7 @@ public class Ranger extends Character{
         Integer dexterity = 5 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
 
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality());
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
 
     }
     @Override

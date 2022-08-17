@@ -6,6 +6,9 @@ public class Warrior extends Character{
         super.setStrength(5);
         super.setDexterity(2);
         super.setIntelligence(1);
+
+        //The main primary attribute of warrior
+        super.setMainPrimaryAttribute(getStrength());
     }
 
     Warrior() {
@@ -15,6 +18,9 @@ public class Warrior extends Character{
         super.setDexterity(2);
         super.setIntelligence(1);
 
+        //The main primary attribute of warrior
+        super.setMainPrimaryAttribute(getStrength());
+
     }
     @Override
     public void levelUp() {
@@ -23,7 +29,7 @@ public class Warrior extends Character{
         Integer strength = 3 + getStrength();
         Integer dexterity = 2 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality());
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
 
     }
 

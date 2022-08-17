@@ -6,6 +6,9 @@ public class Rogue extends Character{
         super.setStrength(2);
         super.setDexterity(6);
         super.setIntelligence(1);
+
+        //The main primary attribute of Rogue
+        super.setMainPrimaryAttribute(getDexterity());
     }
 
     Rogue(){
@@ -14,6 +17,9 @@ public class Rogue extends Character{
         super.setStrength(2);
         super.setDexterity(6);
         super.setIntelligence(1);
+
+        //The main primary attribute of Rogue
+        super.setMainPrimaryAttribute(getDexterity());
     }
 
     @Override
@@ -23,7 +29,7 @@ public class Rogue extends Character{
         Integer strength = 1 + getStrength();
         Integer dexterity = 4 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality());
+        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), );
 
     }
 

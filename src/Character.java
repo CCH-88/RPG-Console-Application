@@ -82,11 +82,22 @@ public class Character extends PrimaryAttribute {
         slotItemHashMap.put(aSlot, anItem);
 
     }
+
     //Specify the slot and it returns the item in that slot.
     public Item getItem(Slot aSlot, Item anItem){
 
         return slotItemHashMap.get(aSlot);
 
+    }
+
+    public void calculateTotalAttributes(int base, int attributesFromAllEquippedArmor){
+        int totalAttributes = base + attributesFromAllEquippedArmor;
+    }
+
+    public double calculateCharacterDPS(Weapon aWeapon, Character aCharacter){
+        double characterDPS = aWeapon.getCalculatedDPS() * (1+aCharacter.getTotalMainPrimaryAttribute()/100);
+
+        return characterDPS;
     }
 
 
