@@ -7,7 +7,7 @@ public class Character extends PrimaryAttribute {
 
     private HashMap<Slot, Item> slotItemHashMap;
 
-    private Weapon aWeapon;
+    //private Weapon aWeapon;
 
     Character(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
         super(strength, dexterity, intelligence, vitality);
@@ -26,15 +26,20 @@ public class Character extends PrimaryAttribute {
         //aWeapon = new Weapon();
     }
 
-    public boolean equipItem(Slot aBodyPart, Item anItem){
+    public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
 
-        if (anItem.getRequiredLvl() > getLevel())
-        {
-            System.out.println("Weapon is too high level for the character");
-            return false;
-        }else
-            slotItemHashMap.put(aBodyPart, anItem);
-            return true;
+
+            if (anItem.getRequiredLvl() > getLevel())
+            {
+                if (aSlot == Slot.WEAPON)
+                    throw new InvalidWeaponException("Weapon is too high level for the character");
+
+                else
+                    throw new InvalidArmorException("Armor is too high level for the character");
+
+            }else
+                setItem(aSlot, anItem);
+                return true;
 
     }
     public void setName(String name) {
@@ -71,4 +76,18 @@ public class Character extends PrimaryAttribute {
     public void setSlotItemHashMap(HashMap<Slot, Item> slotItem) {
         this.slotItemHashMap = slotItem;
     }
+
+    public void setItem(Slot aSlot, Item anItem){
+
+        slotItemHashMap.put(aSlot, anItem);
+
+    }
+    //Specify the slot and it returns the item in that slot.
+    public Item getItem(Slot aSlot, Item anItem){
+
+        return slotItemHashMap.get(aSlot);
+
+    }
+
+
 }

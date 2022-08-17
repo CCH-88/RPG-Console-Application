@@ -5,7 +5,7 @@ public class Weapon extends Item {
 
     private double calculatedDPS = 0;
 
-    WeaponType weaponType;
+
 
     Weapon(String name, Integer requiredLvl) {
         super(name, requiredLvl);
@@ -48,9 +48,5 @@ public class Weapon extends Item {
         this.attacksPerSecond = attacksPerSecond;
     }
 
-    public void setWeaponType(WeaponType weaponType){
 
-        this.weaponType = weaponType;
-
-    }
 }

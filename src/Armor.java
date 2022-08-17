@@ -11,9 +11,9 @@ public class Armor extends Item{
     armorAttributes = new PrimaryAttribute();
     }
 
-    public void setArmorType(ArmorType armorType) {
+    /*public void setArmorType(ArmorType armorType) {
         this.armorType = armorType;
-    }
+    }*/
 
     public void setAttributes(PrimaryAttribute armorAttributes) {
         this.armorAttributes.setBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence(),armorAttributes.getVitality());

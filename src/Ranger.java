@@ -28,4 +28,27 @@ public class Ranger extends Character{
         super.setBaseAttribtues(strength, dexterity, intelligence, getVitality());
 
     }
+    @Override
+    public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
+
+        if (aSlot == Slot.WEAPON)
+        {
+            if (anItem.getWeaponType() == WeaponType.BOW) {
+
+                return super.equipItem(aSlot, anItem);
+            } else {
+                throw new InvalidWeaponException("Ranger cannot equip this type of weapon. Rangers can only equip bows");
+            }
+        }
+        else{
+            if (anItem.getArmorType() == ArmorType.LEATHER || anItem.getArmorType() == ArmorType.MAIL) {
+
+                return super.equipItem(aSlot, anItem);
+            } else {
+                throw new InvalidWeaponException("Ranger cannot equip this type of armor. They can only equip armors of type leather and mail");
+            }
+        }
+
+
+    }
 }

@@ -26,4 +26,28 @@ public class Rogue extends Character{
         super.setBaseAttribtues(strength, dexterity, intelligence, getVitality());
 
     }
+
+    @Override
+    public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
+
+        if (aSlot == Slot.WEAPON)
+        {
+            if (anItem.getWeaponType() == WeaponType.DAGGER || anItem.getWeaponType() == WeaponType.SWORD) {
+
+                return super.equipItem(aSlot, anItem);
+            } else {
+                throw new InvalidWeaponException("Rogues cannot equip this type of weapon. They can only equip daggers and swords");
+            }
+        }
+        else{
+            if (anItem.getArmorType() == ArmorType.LEATHER || anItem.getArmorType() == ArmorType.MAIL) {
+
+                return super.equipItem(aSlot, anItem);
+            } else {
+                throw new InvalidWeaponException("Rogues cannot equip this type of armor. They can only equip armors of type leather and mail");
+            }
+        }
+
+
+    }
 }
