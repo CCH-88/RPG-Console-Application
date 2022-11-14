@@ -37,22 +37,22 @@ public class Mage extends Character{
 
     }
 
-    @Override
-    public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
 
-        if (aSlot == Slot.WEAPON)
+    public boolean equipItem(SlotType aSlotType, Item anItem) throws InvalidWeaponException, InvalidArmorException {
+
+        if (aSlotType == SlotType.WEAPON)
         {
             if (anItem.getWeaponType() == WeaponType.STAFF || anItem.getWeaponType() == WeaponType.WAND) {
 
-                return super.equipItem(aSlot, anItem);
+                return super.checkEquipLvl(aSlotType, anItem);
             } else {
                 throw new InvalidWeaponException("Mage cannot equip this type of weapon. Choose either a staff or wand");
             }
         }
-        else if (aSlot != Slot.WEAPON){
+        else if (aSlotType != SlotType.WEAPON){
             if (anItem.getArmorType() == ArmorType.CLOTH) {
 
-                return super.equipItem(aSlot, anItem);
+                return super.checkEquipLvl(aSlotType, anItem);
 
             } else if (anItem.getArmorType() != ArmorType.CLOTH){
                 throw new InvalidWeaponException("Mage cannot equip this type of armor. Mages can only equip armors of type cloth");

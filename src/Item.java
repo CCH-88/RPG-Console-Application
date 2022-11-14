@@ -17,7 +17,7 @@ public abstract class Item {
 
     ArmorType armorType;
 
-    Slot aSlot;
+    SlotType aSlotType;
 
 
     Item(String name, Integer requiredLvl){
@@ -59,8 +59,8 @@ public abstract class Item {
         return requiredLvl;
     }
 
-    public void setSlot(Slot aSlot) {
-        this.aSlot = aSlot;
+    public void setSlot(SlotType aSlotType) {
+        this.aSlotType = aSlotType;
     }
 
     public void setWeaponType(WeaponType weaponType){
