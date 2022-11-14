@@ -34,28 +34,62 @@ public class Warrior extends Character{
 
     }
 
-    @Override
-    public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
 
-        if (aSlot == Slot.WEAPON)
+    public void equipWeapon(SlotType aSlotType, Item anItem) throws InvalidWeaponException{
+
+        if(aSlotType == SlotType.WEAPON)
         {
-            if (anItem.getWeaponType() == WeaponType.AXE || anItem.getWeaponType() == WeaponType.HAMMER || anItem.getWeaponType() == WeaponType.SWORD) {
+            if (super.checkEquipLvl(aSlotType, anItem))
+            {
+                if (anItem.getWeaponType() == WeaponType.AXE || anItem.getWeaponType() == WeaponType.HAMMER || anItem.getWeaponType() == WeaponType.SWORD) {
 
-                return super.equipItem(aSlot, anItem);
-            } else {
-                throw new InvalidWeaponException("Warriors cannot equip this type of weapon. They can only equip axes, hammers and swords");
+                    System.out.println(anItem.getWeaponType() + " equiped in slot " + aSlotType.name());
+                    super.setItem(aSlotType,anItem);
+
+                } else {
+                    throw new InvalidWeaponException("Warriors cannot equip the weapon type " + anItem.getWeaponType() + ". They can only equip axes, hammers and swords");
+                }
             }
-        }
-        else{
-            if (anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE) {
-
-                return super.equipItem(aSlot, anItem);
-
-            } else if(anItem.getArmorType() != ArmorType.MAIL || anItem.getArmorType() != ArmorType.PLATE){
-                throw new InvalidWeaponException("Warriors cannot equip this type of armor. They can only equip armors of type mail and plate");
+            else{
+                throw new InvalidWeaponException("Weapon is too high high level for the warrior...");
             }
+
+
+
+        }
+        else
+        {
+            System.out.println("Invalid slot type....");
+        }
+    }
+
+    public void equipArmor(SlotType aSlotType, Item anItem) throws InvalidArmorException {
+
+        if(aSlotType == SlotType.HEAD || aSlotType == SlotType.BODY || aSlotType == SlotType.LEGS)
+        {
+            if (super.checkEquipLvl(aSlotType, anItem) == true)
+            {
+                if (anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE)
+                {
+                    System.out.println(anItem.getArmorType() + " equiped in slot " + aSlotType.name());
+                    super.setItem(aSlotType,anItem);
+
+                }
+                else
+                {
+                    throw new InvalidArmorException("Warriors cannot equip the armour type " + anItem.getArmorType() + ". They can only equip mail and plate");
+                }
+            }
+            else{
+                throw new InvalidArmorException("Armor is too high level for the warrior....");
+            }
+
+        }
+        else
+        {
+            System.out.println("Invalid slot type....");
         }
 
-        return true;
+
     }
 }

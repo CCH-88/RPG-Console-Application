@@ -5,7 +5,7 @@ public class Character extends PrimaryAttribute {
     private String name;
     private Integer level;
 
-    private HashMap<Slot, Item> slotItemHashMap;
+    private HashMap<SlotType, Item> slotItemHashMap;
 
     Character(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
         super(strength, dexterity, intelligence, vitality);
@@ -18,25 +18,27 @@ public class Character extends PrimaryAttribute {
 
         //All characters start at level 1
         setLevel(1);
-        slotItemHashMap = new HashMap<Slot, Item>();
+        slotItemHashMap = new HashMap<SlotType, Item>();
         setSlotItemHashMap(slotItemHashMap);
-
 
     }
 
-    public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
-
+    public boolean checkEquipLvl(SlotType aSlotType, Item anItem){
 
             if (anItem.getRequiredLvl() > getLevel())
             {
-                if (aSlot == Slot.WEAPON)
-                    throw new InvalidWeaponException("Weapon is too high level for the character");
-
+                if (aSlotType == SlotType.WEAPON)
+                {
+                    //System.out.println("Weapon is too high level");
+                    return false;
+                }
                 else
-                    throw new InvalidArmorException("Armor is too high level for the character");
+                {
+                    //System.out.println("Armor is too high level");
+                    return false;
+                }
 
             }else
-                setItem(aSlot, anItem);
                 return true;
 
     }
@@ -62,23 +64,23 @@ public class Character extends PrimaryAttribute {
         setLevel(level);
     }
 
-    public HashMap<Slot, Item> getSlotItemHashMap() {
+    public HashMap<SlotType, Item> getSlotItemHashMap() {
         return slotItemHashMap;
     }
 
-    public void setSlotItemHashMap(HashMap<Slot, Item> slotItem) {
+    public void setSlotItemHashMap(HashMap<SlotType, Item> slotItem) {
         this.slotItemHashMap = slotItem;
     }
 
-    public void setItem(Slot aSlot, Item anItem){
+    public void setItem(SlotType aSlotType, Item anItem){
 
-        slotItemHashMap.put(aSlot, anItem);
+        slotItemHashMap.put(aSlotType, anItem);
 
     }
 
-    public Item getItem(Slot aSlot, Item anItem){
+    public Item getItem(SlotType aSlotType, Item anItem){
 
-        return slotItemHashMap.get(aSlot);
+        return slotItemHashMap.get(aSlotType);
 
     }
 

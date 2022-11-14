@@ -34,14 +34,14 @@ public class Rogue extends Character{
 
     }
 
-    @Override
-    public boolean equipItem(Slot aSlot, Item anItem) throws InvalidWeaponException, InvalidArmorException {
 
-        if (aSlot == Slot.WEAPON)
+    public boolean equipItem(SlotType aSlotType, Item anItem) throws InvalidWeaponException, InvalidArmorException {
+
+        if (aSlotType == SlotType.WEAPON)
         {
             if (anItem.getWeaponType() == WeaponType.DAGGER || anItem.getWeaponType() == WeaponType.SWORD) {
 
-                return super.equipItem(aSlot, anItem);
+                return super.checkEquipLvl(aSlotType, anItem);
             } else {
                 throw new InvalidWeaponException("Rogues cannot equip this type of weapon. They can only equip daggers and swords");
             }
@@ -49,7 +49,7 @@ public class Rogue extends Character{
         else{
             if (anItem.getArmorType() == ArmorType.LEATHER || anItem.getArmorType() == ArmorType.MAIL) {
 
-                return super.equipItem(aSlot, anItem);
+                return super.checkEquipLvl(aSlotType, anItem);
             } else if (anItem.getArmorType() != ArmorType.LEATHER || anItem.getArmorType() != ArmorType.MAIL){
                 throw new InvalidWeaponException("Rogues cannot equip this type of armor. They can only equip armors of type leather and mail");
             }
