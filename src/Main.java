@@ -10,7 +10,8 @@ public class Main {
         testWeapon.setSlot(SlotType.WEAPON);
 
         //testWeapon.setWeaponType(WeaponType.BOW);   //--- Test 3. Wrong type of weapon - bow
-        testWeapon.setWeaponType(WeaponType.AXE);
+        //testWeapon.setWeaponType(WeaponType.AXE);
+        testWeapon.setWeaponType(WeaponType.STAFF);
 
         testWeapon.calculateDamagePerSecond(4,2);
 
