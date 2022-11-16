@@ -3,48 +3,52 @@ public class Main {
 
         Weapon testWeapon = new Weapon();
         testWeapon.setName("Common Axe");
-
         //testWeapon.setRequiredLvl(2);  //--- Test 1. Too high level
         testWeapon.setRequiredLvl(1);
-
-        testWeapon.setSlot(SlotType.WEAPON);
-
+        testWeapon.setSlotType(SlotType.WEAPON);
         //testWeapon.setWeaponType(WeaponType.BOW);   //--- Test 3. Wrong type of weapon - bow
-        //testWeapon.setWeaponType(WeaponType.AXE);
-        testWeapon.setWeaponType(WeaponType.STAFF);
-
+        testWeapon.setWeaponType(WeaponType.AXE);
         testWeapon.calculateDamagePerSecond(4,2);
 
 
         Armor testPlateBody = new Armor();
         testPlateBody.setName("Common Plate Body Armor");
-
         //testPlateBody.setRequiredLvl(2); //--- Test 2. Too high level
         testPlateBody.setRequiredLvl(1);
-
-        testPlateBody.setSlot(SlotType.BODY);
-
+        testPlateBody.setSlotType(SlotType.BODY);
         //testPlateBody.setArmorType(ArmorType.CLOTH); //--- Test 4. Wrong type of armour - cloth
         testPlateBody.setArmorType(ArmorType.PLATE);
+        testPlateBody.setArmorAttributes(new PrimaryAttribute(3,1,1));
 
+        Armor testPlateHelmet = new Armor();
+        testPlateHelmet.setName("Common Plate Helmet");
+        testPlateHelmet.setRequiredLvl(1);
+        testPlateHelmet.setSlotType(SlotType.HEAD);
+        testPlateHelmet.setArmorType(ArmorType.PLATE);
+        testPlateHelmet.setArmorAttributes(new PrimaryAttribute(1,0,3));
 
-        testPlateBody.setArmorAttributes(new PrimaryAttribute(1,1,1,2));
 
 
         Warrior aWarrior = new Warrior();
+        aWarrior.setName("John the impaler");
         try {
-            aWarrior.equipWeapon(SlotType.WEAPON,testWeapon);
+            aWarrior.equipWeapon(SlotType.WEAPON,testWeapon); //Test 4 - returns true if everything OK...
         } catch (InvalidWeaponException e) {
             System.out.println(e);
         }
-        System.out.println(aWarrior.checkEquipLvl(SlotType.WEAPON, testWeapon)); //Test 4 - return true if everything OK
+
 
         try {
-            aWarrior.equipArmor(SlotType.HEAD,testPlateBody);
+            aWarrior.equipArmor(SlotType.BODY, testPlateBody); //Test 5 - returns true if everything OK
+            aWarrior.equipArmor(SlotType.HEAD, testPlateHelmet);
         } catch (InvalidArmorException e) {
             System.out.println(e);
         }
-        System.out.println(aWarrior.checkEquipLvl(SlotType.HEAD,testPlateBody)); //Test 5 - return true if everything OK
+
+        System.out.println("The total attributes of the warrior " + aWarrior.getName() +
+                " is: " + aWarrior.totalAttribute() + " (Expected 17)");
+
+
 
     }
 

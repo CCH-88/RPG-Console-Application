@@ -1,6 +1,6 @@
 public class Rogue extends Character{
     Rogue(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence, vitality);
+        super(strength, dexterity, intelligence);
 
         //The default attributes at level 1 for Rogue
         super.setStrength(2);
@@ -30,7 +30,7 @@ public class Rogue extends Character{
         Integer dexterity = 4 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
         Integer rogueMainPrimaryAttribute = dexterity;
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), rogueMainPrimaryAttribute);
+        super.setBaseAttribtues(strength, dexterity, intelligence, rogueMainPrimaryAttribute);
 
     }
 

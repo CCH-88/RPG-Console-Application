@@ -1,6 +1,6 @@
 public class Warrior extends Character{
     Warrior(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence, vitality);
+        super(strength, dexterity, intelligence);
 
         //The default attributes at level 1 for warrior
         super.setStrength(5);
@@ -30,12 +30,12 @@ public class Warrior extends Character{
         Integer dexterity = 2 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
         Integer warriorMainPrimaryAttribute = strength;
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(), warriorMainPrimaryAttribute);
+        super.setBaseAttribtues(strength, dexterity, intelligence, warriorMainPrimaryAttribute);
 
     }
 
 
-    public void equipWeapon(SlotType aSlotType, Item anItem) throws InvalidWeaponException{
+    public boolean equipWeapon(SlotType aSlotType, Item anItem) throws InvalidWeaponException{
 
         if(aSlotType == SlotType.WEAPON)
         {
@@ -45,6 +45,7 @@ public class Warrior extends Character{
 
                     System.out.println(anItem.getWeaponType() + " equiped in slot " + aSlotType.name());
                     super.setItem(aSlotType,anItem);
+                    return true;
 
                 } else {
                     throw new InvalidWeaponException("Warriors cannot equip the weapon type " + anItem.getWeaponType() + ". They can only equip axes, hammers and swords");
@@ -60,10 +61,11 @@ public class Warrior extends Character{
         else
         {
             System.out.println("Invalid slot type....");
+            return false;
         }
     }
 
-    public void equipArmor(SlotType aSlotType, Item anItem) throws InvalidArmorException {
+    public boolean equipArmor(SlotType aSlotType, Item anItem) throws InvalidArmorException {
 
         if(aSlotType == SlotType.HEAD || aSlotType == SlotType.BODY || aSlotType == SlotType.LEGS)
         {
@@ -71,8 +73,9 @@ public class Warrior extends Character{
             {
                 if (anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE)
                 {
-                    System.out.println(anItem.getArmorType() + " equiped in slot " + aSlotType.name());
+                    System.out.println(anItem.getName() + " equiped in slot " + aSlotType.name());
                     super.setItem(aSlotType,anItem);
+                    return true;
 
                 }
                 else
@@ -88,8 +91,8 @@ public class Warrior extends Character{
         else
         {
             System.out.println("Invalid slot type....");
+            return false;
         }
-
 
     }
 }

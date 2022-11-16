@@ -2,7 +2,7 @@ public class Mage extends Character{
 
 
     Mage(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence, vitality);
+        super(strength, dexterity, intelligence);
 
         //The default attributes at level 1 for mage
         super.setStrength(1);
@@ -33,7 +33,7 @@ public class Mage extends Character{
         Integer dexterity = 2 + getDexterity();
         Integer intelligence = 1 + getIntelligence();
         Integer mageMainPrimaryAttribute = intelligence;
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(),mageMainPrimaryAttribute);
+        super.setBaseAttribtues(strength, dexterity, intelligence, mageMainPrimaryAttribute);
 
     }
 

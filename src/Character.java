@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Character extends PrimaryAttribute {
 
@@ -7,8 +9,8 @@ public class Character extends PrimaryAttribute {
 
     private HashMap<SlotType, Item> slotItemHashMap;
 
-    Character(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence, vitality);
+    Character(Integer strength, Integer dexterity, Integer intelligence) {
+        super(strength, dexterity, intelligence);
 
         //All characters start at level 1
         setLevel(1);
@@ -39,7 +41,10 @@ public class Character extends PrimaryAttribute {
                 }
 
             }else
+            {
                 return true;
+            }
+
 
     }
     public void setName(String name) {
@@ -85,33 +90,36 @@ public class Character extends PrimaryAttribute {
     }
 
     //Did not finish in time
-    public void calculateTotalAttributes(int base, int attributesFromAllEquippedArmor){
-        int totalAttributes = base + attributesFromAllEquippedArmor;
-    }
-
-    //Did not finish in time
     /*public double calculateCharacterDPS(Weapon aWeapon, Character aCharacter){
         double characterDPS = aWeapon.getCalculatedDPS() * (1+aCharacter.getTotalMainPrimaryAttribute()/100);
 
         return characterDPS;
     }*/
 
-    //Did not finish in time
+    public int totalAttribute(){
+
+        int totalAttribute = getTotalBaseAttributes() + getAllArmorAttributes();
+
+        return totalAttribute;
+    }
+
+
     public int getAllArmorAttributes() {
 
+        Map<SlotType, Item> armorMap = getSlotItemHashMap()
+                .entrySet()
+                .stream()
+                .filter(x-> x.getKey().equals(SlotType.BODY)
+                        || x.getKey().equals(SlotType.HEAD)
+                        || x.getKey().equals(SlotType.LEGS))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        int sum = 0;
-        for (Item anItem: getSlotItemHashMap().values()) {
-            if(anItem.getArmorType() == ArmorType.CLOTH || anItem.getArmorType() == ArmorType.LEATHER ||
-                    anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE && anItem != null) {
+        int totalArmorAttributes = armorMap
+                .values()
+                .stream()
+                .mapToInt(anItem -> anItem.getTotalArmorAttribute())
+                .sum();
 
-                sum += anItem.getTotalArmorAttribute();
-
-                return sum;
-            }
-
-        }
-
-        return sum;
+        return totalArmorAttributes;
     }
 }

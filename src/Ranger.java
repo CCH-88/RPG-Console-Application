@@ -1,6 +1,6 @@
 public class Ranger extends Character{
     Ranger(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence, vitality);
+        super(strength, dexterity, intelligence);
 
         //The default attributes at level 1 for Ranger
         super.setStrength(1);
@@ -32,7 +32,7 @@ public class Ranger extends Character{
         Integer intelligence = 1 + getIntelligence();
         Integer rangerMainPrimaryAttribute = dexterity;
 
-        super.setBaseAttribtues(strength, dexterity, intelligence, getVitality(),rangerMainPrimaryAttribute);
+        super.setBaseAttribtues(strength, dexterity, intelligence, rangerMainPrimaryAttribute);
 
     }
 

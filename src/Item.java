@@ -34,7 +34,7 @@ public abstract class Item {
     }
 
     public void setArmorAttributes(PrimaryAttribute armorAttributes) {
-        this.armorAttributes.setBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence(),armorAttributes.getVitality(), armorAttributes.getMainPrimaryAttribute());
+        this.armorAttributes.setBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence(), armorAttributes.getMainPrimaryAttribute());
 
         setArmorStrength(armorAttributes.getStrength());
         setArmorDexterity(armorAttributes.getDexterity());
@@ -59,7 +59,7 @@ public abstract class Item {
         return requiredLvl;
     }
 
-    public void setSlot(SlotType aSlotType) {
+    public void setSlotType(SlotType aSlotType) {
         this.aSlotType = aSlotType;
     }
 
