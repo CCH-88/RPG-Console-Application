@@ -34,7 +34,7 @@ public abstract class Item {
     }
 
     public void setArmorAttributes(PrimaryAttribute armorAttributes) {
-        this.armorAttributes.setBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence(), armorAttributes.getMainPrimaryAttribute());
+        this.armorAttributes.setArmorBaseAttribtues(armorAttributes.getStrength(),armorAttributes.getDexterity(), armorAttributes.getIntelligence());
 
         setArmorStrength(armorAttributes.getStrength());
         setArmorDexterity(armorAttributes.getDexterity());
@@ -108,16 +108,12 @@ public abstract class Item {
         this.armorIntelligence = armorIntelligence;
     }
 
-    public Integer getArmorVitality() {
-        return armorVitality;
-    }
-
-    public void setArmorVitality(Integer armorVitality) {
-        this.armorVitality = armorVitality;
-    }
-
     public int getTotalArmorAttribute() {
         int totalArmorAttribute = getArmorStrength() + getArmorDexterity() + getArmorIntelligence();
         return totalArmorAttribute;
+    }
+
+    public SlotType getSlotType() {
+        return this.aSlotType;
     }
 }

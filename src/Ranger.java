@@ -1,15 +1,4 @@
 public class Ranger extends Character{
-    Ranger(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence);
-
-        //The default attributes at level 1 for Ranger
-        super.setStrength(1);
-        super.setDexterity(7);
-        super.setIntelligence(1);
-
-        //The main primary attribute of Ranger
-        super.setMainPrimaryAttribute(getDexterity());
-    }
 
     public Ranger() {
 

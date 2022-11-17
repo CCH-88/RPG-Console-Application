@@ -3,26 +3,21 @@ public class Weapon extends Item {
     private Integer damage = 0;
     private double attacksPerSecond = 0.0;
 
-    private double calculatedDPS = 0;
+    private double calculatedWeaponDPS = 0;
 
-
-    public Weapon() {
+    public Weapon(Integer damage, double attacksPerSecond) {
         super();
+        this.damage = damage;
+        this.attacksPerSecond = attacksPerSecond;
+        this.calculatedWeaponDPS = damage * attacksPerSecond;
     }
 
-    public void calculateDamagePerSecond(Integer damage, double attacksPerSecond){
-
-        setCalculatedDPS(damage * attacksPerSecond);
-        setDamage(damage);
-        setAttacksPerSecond(attacksPerSecond);
-
-    }
-    public void setCalculatedDPS(double calculatedDPS) {
-        this.calculatedDPS = calculatedDPS;
+    public void calculateWeaponDPS(){
+        this.calculatedWeaponDPS = damage * attacksPerSecond;
     }
 
-    public double getCalculatedDPS() {
-        return calculatedDPS;
+    public double getCalculatedWeaponDPS() {
+        return calculatedWeaponDPS;
     }
 
     public void setDamage(Integer damage) {
@@ -40,6 +35,5 @@ public class Weapon extends Item {
     public void setAttacksPerSecond(double attacksPerSecond) {
         this.attacksPerSecond = attacksPerSecond;
     }
-
 
 }

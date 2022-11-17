@@ -9,13 +9,6 @@ public class Character extends PrimaryAttribute {
 
     private HashMap<SlotType, Item> slotItemHashMap;
 
-    Character(Integer strength, Integer dexterity, Integer intelligence) {
-        super(strength, dexterity, intelligence);
-
-        //All characters start at level 1
-        setLevel(1);
-    }
-
     Character(){
 
         //All characters start at level 1
@@ -64,7 +57,6 @@ public class Character extends PrimaryAttribute {
     }
 
     public void levelUp(){
-
         Integer level = 1 + getLevel();
         setLevel(level);
     }
@@ -89,12 +81,27 @@ public class Character extends PrimaryAttribute {
 
     }
 
-    //Did not finish in time
-    /*public double calculateCharacterDPS(Weapon aWeapon, Character aCharacter){
-        double characterDPS = aWeapon.getCalculatedDPS() * (1+aCharacter.getTotalMainPrimaryAttribute()/100);
+    public double calculatedCharacterDPS(){
 
-        return characterDPS;
-    }*/
+        double weaponDPS = 0.0;
+        double firstCalc = 0.0;
+        double characterDPS = 0.0;
+
+        if (getEquippedWeapon() == null) {
+            System.out.println("No weapon is equipped....");
+
+            firstCalc = 1+this.getMainPrimaryAttribute()/100;
+            return firstCalc;
+
+        }else{
+            weaponDPS = getEquippedWeapon().getCalculatedWeaponDPS();
+            firstCalc = 1+((this.getMainPrimaryAttribute() + getAllArmorAttributes())/100);
+
+            return characterDPS = weaponDPS * firstCalc;
+
+        }
+
+    }
 
     public int totalAttribute(){
 
@@ -121,5 +128,16 @@ public class Character extends PrimaryAttribute {
                 .sum();
 
         return totalArmorAttributes;
+    }
+
+    public Weapon getEquippedWeapon(){
+
+        Map<SlotType, Item> weaponMap = getSlotItemHashMap()
+                .entrySet()
+                .stream()
+                .filter(x-> x.getKey().equals(SlotType.WEAPON))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        return (Weapon) weaponMap.get(SlotType.WEAPON);
     }
 }

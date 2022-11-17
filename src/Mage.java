@@ -1,18 +1,6 @@
 public class Mage extends Character{
 
 
-    Mage(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence);
-
-        //The default attributes at level 1 for mage
-        super.setStrength(1);
-        super.setDexterity(1);
-        super.setIntelligence(8);
-
-        //The main primary attribute of Mage
-        super.setMainPrimaryAttribute(getIntelligence());
-    }
-
     Mage(){
 
         //The default attributes at level 1 for mage

@@ -1,15 +1,4 @@
 public class Rogue extends Character{
-    Rogue(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence);
-
-        //The default attributes at level 1 for Rogue
-        super.setStrength(2);
-        super.setDexterity(6);
-        super.setIntelligence(1);
-
-        //The main primary attribute of Rogue
-        super.setMainPrimaryAttribute(getDexterity());
-    }
 
     Rogue(){
 

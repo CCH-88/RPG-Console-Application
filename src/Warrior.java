@@ -1,15 +1,4 @@
 public class Warrior extends Character{
-    Warrior(Integer strength, Integer dexterity, Integer intelligence, Integer vitality) {
-        super(strength, dexterity, intelligence);
-
-        //The default attributes at level 1 for warrior
-        super.setStrength(5);
-        super.setDexterity(2);
-        super.setIntelligence(1);
-
-        //The main primary attribute of warrior
-        super.setMainPrimaryAttribute(getStrength());
-    }
 
     Warrior() {
 
@@ -34,6 +23,10 @@ public class Warrior extends Character{
 
     }
 
+    public double getCharacterDPS(){
+        return this.calculatedCharacterDPS();
+    }
+
 
     public boolean equipWeapon(SlotType aSlotType, Item anItem) throws InvalidWeaponException{
 
@@ -54,9 +47,6 @@ public class Warrior extends Character{
             else{
                 throw new InvalidWeaponException("Weapon is too high high level for the warrior...");
             }
-
-
-
         }
         else
         {

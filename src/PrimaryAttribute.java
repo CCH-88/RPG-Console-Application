@@ -15,20 +15,15 @@ public class PrimaryAttribute {
         this.strength = strength;
         this.dexterity = dexterity;
         this.intelligence = intelligence;
-        //this.vitality = vitality;
-    }
 
+    }
     PrimaryAttribute(){
 
     }
-
-
-
     public void setBaseAttribtues(Integer baseStrength, Integer baseDexterity, Integer baseIntelligence, Integer mainPrimaryAttribute){
         this.strength = baseStrength;
         this.dexterity = baseDexterity;
         this.intelligence = baseIntelligence;
-        //this.vitality = baseVitality;
         this.mainPrimaryAttribute = mainPrimaryAttribute;
     }
 
@@ -67,24 +62,23 @@ public class PrimaryAttribute {
         return strength;
     }
 
-    /*public Integer getVitality() {
-        return vitality;
-    }*/
 
-    /*public void setVitality(Integer vitality) {
-        this.vitality = vitality;
-    }*/
-
-    /*protected int getTotalMainPrimaryAttribute() {
-    }*/
-
-    public Integer getMainPrimaryAttribute() {
-        return mainPrimaryAttribute;
+    public double getMainPrimaryAttribute() {
+        return (double) mainPrimaryAttribute;
     }
 
     public void setMainPrimaryAttribute(Integer mainPrimaryAttribute) {
         this.mainPrimaryAttribute = mainPrimaryAttribute;
     }
 
+    public void setArmorBaseAttribtues(Integer strength, Integer dexterity, Integer intelligence) {
+        this.strength = strength;
+        this.dexterity = dexterity;
+        this.intelligence = intelligence;
+    }
 
+    public int[] getArmorBaseAttribtues() {
+        int[] armorBaseAttributes = {this.strength,this.strength,this.intelligence};
+        return armorBaseAttributes;
+    }
 }
