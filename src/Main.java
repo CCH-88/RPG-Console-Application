@@ -29,16 +29,14 @@ public class Main {
 
         Warrior aWarrior = new Warrior();
         aWarrior.setName("John the impaler");
+        aWarrior.levelUp();
+        aWarrior.levelUp();
 
         try {
             aWarrior.equipWeapon(SlotType.WEAPON,testWeapon); //Test 4 - returns true if everything OK...
         } catch (InvalidWeaponException e) {
             System.out.println(e);
         }
-
-        System.out.println(aWarrior.getName() +
-                " has now equipped a" + testWeapon.getName() +
-                " of type " + testWeapon.getWeaponType() + " in slot " + testWeapon.getSlotType());
 
         try {
             aWarrior.equipArmor(SlotType.BODY, testPlateBody); //Test 5 - returns true if everything OK
@@ -47,10 +45,10 @@ public class Main {
             System.out.println(e);
         }
 
-        System.out.println(aWarrior.getName() + " has a Character DPS of " + aWarrior.calculatedCharacterDPS());
+        System.out.println(aWarrior.getCharacterSheet());
 
-        /*System.out.println("The total attributes of the warrior " + aWarrior.getName() +
-                " is: " + aWarrior.totalAttribute() + " (Expected 17)");*/
+
+
 
 
 
