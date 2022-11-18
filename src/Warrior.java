@@ -23,11 +23,6 @@ public class Warrior extends Character{
 
     }
 
-    public double getCharacterDPS(){
-        return this.calculatedCharacterDPS();
-    }
-
-
     public boolean equipWeapon(SlotType aSlotType, Item anItem) throws InvalidWeaponException{
 
         if(aSlotType == SlotType.WEAPON)
@@ -36,7 +31,7 @@ public class Warrior extends Character{
             {
                 if (anItem.getWeaponType() == WeaponType.AXE || anItem.getWeaponType() == WeaponType.HAMMER || anItem.getWeaponType() == WeaponType.SWORD) {
 
-                    System.out.println(anItem.getWeaponType() + " equiped in slot " + aSlotType.name());
+                    System.out.println(anItem.getWeaponType() + " equiped in slot " + aSlotType.name() + "\n");
                     super.setItem(aSlotType,anItem);
                     return true;
 
@@ -50,7 +45,7 @@ public class Warrior extends Character{
         }
         else
         {
-            System.out.println("Invalid slot type....");
+            System.out.println("Invalid slot type...." + "\n");
             return false;
         }
     }
@@ -63,7 +58,7 @@ public class Warrior extends Character{
             {
                 if (anItem.getArmorType() == ArmorType.MAIL || anItem.getArmorType() == ArmorType.PLATE)
                 {
-                    System.out.println(anItem.getName() + " equiped in slot " + aSlotType.name());
+                    System.out.println(anItem.getName() + " equiped in slot " + aSlotType.name() + "\n");
                     super.setItem(aSlotType,anItem);
                     return true;
 
@@ -80,7 +75,7 @@ public class Warrior extends Character{
         }
         else
         {
-            System.out.println("Invalid slot type....");
+            System.out.println("Invalid slot type...." + "\n");
             return false;
         }
 

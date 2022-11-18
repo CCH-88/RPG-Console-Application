@@ -1,3 +1,6 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -6,7 +9,6 @@ public class Character extends PrimaryAttribute {
 
     private String name;
     private Integer level;
-
     private HashMap<SlotType, Item> slotItemHashMap;
 
     Character(){
@@ -24,12 +26,10 @@ public class Character extends PrimaryAttribute {
             {
                 if (aSlotType == SlotType.WEAPON)
                 {
-                    //System.out.println("Weapon is too high level");
                     return false;
                 }
                 else
                 {
-                    //System.out.println("Armor is too high level");
                     return false;
                 }
 
@@ -40,6 +40,7 @@ public class Character extends PrimaryAttribute {
 
 
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -88,7 +89,6 @@ public class Character extends PrimaryAttribute {
         double characterDPS = 0.0;
 
         if (getEquippedWeapon() == null) {
-            System.out.println("No weapon is equipped....");
 
             firstCalc = 1+this.getMainPrimaryAttribute()/100;
             return firstCalc;
@@ -103,13 +103,16 @@ public class Character extends PrimaryAttribute {
 
     }
 
+    public double getCharacterDPS(){
+        return this.calculatedCharacterDPS();
+    }
+
     public int totalAttribute(){
 
         int totalAttribute = getTotalBaseAttributes() + getAllArmorAttributes();
 
         return totalAttribute;
     }
-
 
     public int getAllArmorAttributes() {
 
@@ -139,5 +142,19 @@ public class Character extends PrimaryAttribute {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         return (Weapon) weaponMap.get(SlotType.WEAPON);
+    }
+
+    public StringBuilder getCharacterSheet(){
+
+        StringBuilder characterSheet = new StringBuilder();
+        characterSheet.append("\n" + "------Character Sheet-------");
+        characterSheet.append("\n Name: " + this.getName());
+        characterSheet.append("\n Level: " + this.getLevel());
+        characterSheet.append("\n Strength: " + this.getStrength());
+        characterSheet.append("\n Dexterity: " + this.getDexterity());
+        characterSheet.append("\n Intelligence: " + this.getIntelligence());
+        characterSheet.append("\n CharacterDPS: " + this.getCharacterDPS() + "\n");
+
+        return characterSheet;
     }
 }
