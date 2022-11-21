@@ -29,6 +29,7 @@ public class Main {
 
         Warrior aWarrior = new Warrior();
         aWarrior.setName("John the impaler");
+        aWarrior.levelUp();
 
 
         try {

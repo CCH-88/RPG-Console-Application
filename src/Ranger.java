@@ -25,26 +25,61 @@ public class Ranger extends Character{
 
     }
 
-    public boolean equipItem(SlotType aSlotType, Item anItem) throws InvalidWeaponException, InvalidArmorException {
+    public boolean equipWeapon(SlotType aSlotType, Item anItem) throws InvalidWeaponException{
 
-        if (aSlotType == SlotType.WEAPON)
+        if(aSlotType == SlotType.WEAPON)
         {
-            if (anItem.getWeaponType() == WeaponType.BOW) {
+            if (super.checkEquipLvl(aSlotType, anItem))
+            {
+                if (anItem.getWeaponType() == WeaponType.BOW) {
 
-                return super.checkEquipLvl(aSlotType, anItem);
-            } else {
-                throw new InvalidWeaponException("Ranger cannot equip this type of weapon. Rangers can only equip bows");
+                    System.out.println(anItem.getWeaponType() + " equiped in slot " + aSlotType.name() + "\n");
+                    super.setItem(aSlotType,anItem);
+                    return true;
+
+                } else {
+                    throw new InvalidWeaponException("Rangers cannot equip the weapon type " + anItem.getWeaponType() + ". They can only equip bows");
+                }
+            }
+            else{
+                throw new InvalidWeaponException("Weapon is too high high level for the Ranger...");
             }
         }
-        else{
-            if (anItem.getArmorType() == ArmorType.LEATHER || anItem.getArmorType() == ArmorType.MAIL) {
-
-                return super.checkEquipLvl(aSlotType, anItem);
-            } else if(anItem.getArmorType() != ArmorType.LEATHER || anItem.getArmorType() != ArmorType.MAIL) {
-                throw new InvalidWeaponException("Ranger cannot equip this type of armor. They can only equip armors of type leather and mail");
-            }
+        else
+        {
+            System.out.println("Invalid slot type...." + "\n");
+            return false;
         }
-        return true;
+    }
+
+    public boolean equipArmor(SlotType aSlotType, Item anItem) throws InvalidArmorException {
+
+        if(aSlotType == SlotType.HEAD || aSlotType == SlotType.BODY || aSlotType == SlotType.LEGS)
+        {
+            if (super.checkEquipLvl(aSlotType, anItem) == true)
+            {
+                if (anItem.getArmorType() == ArmorType.LEATHER || anItem.getArmorType() == ArmorType.MAIL)
+                {
+                    System.out.println(anItem.getName() + " equiped in slot " + aSlotType.name() + "\n");
+                    super.setItem(aSlotType,anItem);
+                    return true;
+
+                }
+                else
+                {
+                    throw new InvalidArmorException("Rangers cannot equip the armour type " + anItem.getArmorType() + ". They can only equip leather and mail");
+                }
+            }
+            else{
+                throw new InvalidArmorException("Armor is too high level for the Ranger....");
+            }
+
+        }
+        else
+        {
+            System.out.println("Invalid slot type...." + "\n");
+            return false;
+        }
 
     }
 }
