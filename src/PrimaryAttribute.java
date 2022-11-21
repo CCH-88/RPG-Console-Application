@@ -1,9 +1,10 @@
+import java.util.HashMap;
+
 public class PrimaryAttribute {
 
     private Integer strength;
     private Integer dexterity;
     private Integer intelligence;
-    private Integer vitality;
 
     private Integer mainPrimaryAttribute;
 
@@ -27,7 +28,7 @@ public class PrimaryAttribute {
         this.mainPrimaryAttribute = mainPrimaryAttribute;
     }
 
-    public int getTotalBaseAttributes(){
+    public int getSumOfBaseAttributes(){
         //vitality and mainPrimaryAttribute are not included...
         return strength+dexterity+intelligence;
     }
@@ -36,6 +37,18 @@ public class PrimaryAttribute {
         this.totalStrength = totalStrength;
         this.totalDexterity = totalDexterity;
         this.totalIntelligence = totalIntelligence;
+    }
+
+    public HashMap<String, Integer> getAllAttributes(){
+
+        HashMap<String, Integer> allAttributes = new HashMap<>();
+
+        allAttributes.put("Strength", getStrength());
+        allAttributes.put("Dexterity", getDexterity());
+        allAttributes.put("Intelligence", getIntelligence());
+
+        return allAttributes;
+
     }
 
     public void setDexterity(Integer dexterity) {
@@ -80,5 +93,30 @@ public class PrimaryAttribute {
     public int[] getArmorBaseAttribtues() {
         int[] armorBaseAttributes = {this.strength,this.strength,this.intelligence};
         return armorBaseAttributes;
+    }
+
+    public Integer getTotalStrength() {
+        return totalStrength;
+    }
+
+    public void setTotalStrength(Integer totalStrength) {
+        this.totalStrength = totalStrength;
+    }
+
+    public Integer getTotalDexterity() {
+        return totalDexterity;
+    }
+
+    public void setTotalDexterity(Integer totalDexterity) {
+
+        this.totalDexterity = totalDexterity;
+    }
+
+    public Integer getTotalIntelligence() {
+        return totalIntelligence;
+    }
+
+    public void setTotalIntelligence(Integer totalIntelligence) {
+        this.totalIntelligence = totalIntelligence;
     }
 }
