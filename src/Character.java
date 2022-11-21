@@ -108,13 +108,6 @@ public class Character extends PrimaryAttribute {
         return this.calculatedCharacterDPS();
     }
 
-    public int sumOfTotalAttributes(){
-
-        int sumOftotalAttributes = getSumOfBaseAttributes() + getSumOfEquipedArmorAttributes();
-
-        return sumOftotalAttributes;
-    }
-
     public int getSumOfEquipedArmorAttributes() {
 
         armorMap = getAllEquipedArmor();
