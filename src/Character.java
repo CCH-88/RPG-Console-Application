@@ -1,8 +1,7 @@
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class Character extends PrimaryAttribute {
@@ -10,6 +9,8 @@ public class Character extends PrimaryAttribute {
     private String name;
     private Integer level;
     private HashMap<SlotType, Item> slotItemHashMap;
+
+    private Map<SlotType, Item> armorMap;
 
     Character(){
 
@@ -95,7 +96,7 @@ public class Character extends PrimaryAttribute {
 
         }else{
             weaponDPS = getEquippedWeapon().getCalculatedWeaponDPS();
-            firstCalc = 1+((this.getMainPrimaryAttribute() + getAllArmorAttributes())/100);
+            firstCalc = 1+((this.getMainPrimaryAttribute() + getSumOfEquipedArmorAttributes())/100);
 
             return characterDPS = weaponDPS * firstCalc;
 
@@ -107,22 +108,16 @@ public class Character extends PrimaryAttribute {
         return this.calculatedCharacterDPS();
     }
 
-    public int totalAttribute(){
+    public int sumOfTotalAttributes(){
 
-        int totalAttribute = getTotalBaseAttributes() + getAllArmorAttributes();
+        int sumOftotalAttributes = getSumOfBaseAttributes() + getSumOfEquipedArmorAttributes();
 
-        return totalAttribute;
+        return sumOftotalAttributes;
     }
 
-    public int getAllArmorAttributes() {
+    public int getSumOfEquipedArmorAttributes() {
 
-        Map<SlotType, Item> armorMap = getSlotItemHashMap()
-                .entrySet()
-                .stream()
-                .filter(x-> x.getKey().equals(SlotType.BODY)
-                        || x.getKey().equals(SlotType.HEAD)
-                        || x.getKey().equals(SlotType.LEGS))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        armorMap = getAllEquipedArmor();
 
         int totalArmorAttributes = armorMap
                 .values()
@@ -131,6 +126,22 @@ public class Character extends PrimaryAttribute {
                 .sum();
 
         return totalArmorAttributes;
+    }
+
+    public Map<SlotType, Item> getAllEquipedArmor(){
+
+        //An armors attributes should be added to the total attributes... (not base attributes...)
+
+        armorMap = getSlotItemHashMap()
+                .entrySet()
+                .stream()
+                .filter(x-> x.getKey().equals(SlotType.BODY)
+                        || x.getKey().equals(SlotType.HEAD)
+                        || x.getKey().equals(SlotType.LEGS))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+
+        return armorMap;
     }
 
     public Weapon getEquippedWeapon(){
@@ -150,11 +161,68 @@ public class Character extends PrimaryAttribute {
         characterSheet.append("\n" + "------Character Sheet-------");
         characterSheet.append("\n Name: " + this.getName());
         characterSheet.append("\n Level: " + this.getLevel());
+        characterSheet.append("\n" + "------Base attributes...-------");
         characterSheet.append("\n Strength: " + this.getStrength());
         characterSheet.append("\n Dexterity: " + this.getDexterity());
         characterSheet.append("\n Intelligence: " + this.getIntelligence());
+        characterSheet.append("\n" + "------Total attributes...-------");
+        characterSheet.append("\n Strength: " + this.getTotalStrength());
+        characterSheet.append("\n Dexterity: " + this.getTotalDexterity());
+        characterSheet.append("\n Intelligence: " + this.getTotalIntelligence());
+        characterSheet.append("\n" + "------The DPS of the character is... -------");
         characterSheet.append("\n CharacterDPS: " + this.getCharacterDPS() + "\n");
 
         return characterSheet;
+    }
+
+    public Map<SlotType, Item> getArmorMap() {
+        return armorMap;
+    }
+
+    public void setArmorMap(Map<SlotType, Item> armorMap) {
+        this.armorMap = armorMap;
+    }
+
+    public void calculateTotalAttributes(){
+
+        setArmorMap(getAllEquipedArmor());
+
+        if(getArmorMap().isEmpty()){
+
+            System.out.println("No armor equipped. Cannot calculate total attributes...");
+
+        }
+        else{
+
+            if (getArmorMap().containsKey(SlotType.BODY)) {
+
+                //System.out.println("Body armor equipped. Calculates the total attributes of the body armor...");
+
+                setTotalStrength(getArmorMap().get(SlotType.BODY).getArmorStrength() + getAllAttributes().get("Strength"));
+                setTotalDexterity(getArmorMap().get(SlotType.BODY).getArmorDexterity() + getAllAttributes().get("Dexterity"));
+                setTotalIntelligence(getArmorMap().get(SlotType.BODY).getArmorIntelligence() + getAllAttributes().get("Intelligence"));
+            }
+
+            if (getArmorMap().containsKey(SlotType.LEGS)){
+
+                //System.out.println("Leg armor equipped. Calculates the total attributes of the Leg armor...");
+
+                setTotalStrength(getArmorMap().get(SlotType.LEGS).getArmorStrength() + getAllAttributes().get("Strength"));
+                setTotalDexterity(getArmorMap().get(SlotType.LEGS).getArmorDexterity() + getAllAttributes().get("Dexterity"));
+                setTotalIntelligence(getArmorMap().get(SlotType.LEGS).getArmorIntelligence() + getAllAttributes().get("Intelligence"));
+
+            }
+
+            if (getArmorMap().containsKey(SlotType.HEAD)){
+
+                //System.out.println("Head armor equipped. Calculates the total attributes of the Head armor...");
+
+                setTotalStrength(getArmorMap().get(SlotType.HEAD).getArmorStrength() + getAllAttributes().get("Strength"));
+                setTotalDexterity(getArmorMap().get(SlotType.HEAD).getArmorDexterity() + getAllAttributes().get("Dexterity"));
+                setTotalIntelligence(getArmorMap().get(SlotType.HEAD).getArmorIntelligence() + getAllAttributes().get("Intelligence"));
+
+            }
+        }
+
     }
 }

@@ -29,8 +29,7 @@ public class Main {
 
         Warrior aWarrior = new Warrior();
         aWarrior.setName("John the impaler");
-        aWarrior.levelUp();
-        aWarrior.levelUp();
+
 
         try {
             aWarrior.equipWeapon(SlotType.WEAPON,testWeapon); //Test 4 - returns true if everything OK...
@@ -40,21 +39,14 @@ public class Main {
 
         try {
             aWarrior.equipArmor(SlotType.BODY, testPlateBody); //Test 5 - returns true if everything OK
-            //aWarrior.equipArmor(SlotType.HEAD, testPlateHelmet);
+            aWarrior.equipArmor(SlotType.HEAD, testPlateHelmet);
         } catch (InvalidArmorException e) {
             System.out.println(e);
         }
 
+        aWarrior.calculateTotalAttributes();
         System.out.println(aWarrior.getCharacterSheet());
 
-
-
-
-
-
     }
-
-
-
 
 }

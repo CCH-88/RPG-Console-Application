@@ -6,8 +6,6 @@ public abstract class Item {
 
     private Integer armorIntelligence;
 
-    private Integer armorVitality;
-
     private String name;
     private Integer requiredLvl;
 
