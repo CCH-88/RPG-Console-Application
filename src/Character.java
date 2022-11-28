@@ -1,7 +1,5 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class Character extends PrimaryAttribute {
@@ -11,6 +9,8 @@ public class Character extends PrimaryAttribute {
     private HashMap<SlotType, Item> slotItemHashMap;
 
     private Map<SlotType, Item> armorMap;
+
+    private double characterDPS = 0.0;
 
     Character(){
 
@@ -83,36 +83,28 @@ public class Character extends PrimaryAttribute {
 
     }
 
-    public double calculatedCharacterDPS(){
+    public void calculatedCharacterDPS(){
 
         double weaponDPS = 0.0;
         double firstCalc = 0.0;
-        double characterDPS = 0.0;
+
 
         if (getEquippedWeapon() == null) {
 
             firstCalc = 1+this.getMainPrimaryAttribute()/100;
-            return firstCalc;
+            setCharacterDPS(firstCalc);
 
         }else{
             weaponDPS = getEquippedWeapon().getCalculatedWeaponDPS();
             firstCalc = 1+((this.getMainPrimaryAttribute() + getSumOfEquipedArmorAttributes())/100);
 
-            return characterDPS = weaponDPS * firstCalc;
-
+            setCharacterDPS(weaponDPS * firstCalc);
         }
 
     }
 
     public double getCharacterDPS(){
-        return this.calculatedCharacterDPS();
-    }
-
-    public int sumOfTotalAttributes(){
-
-        int sumOftotalAttributes = getSumOfBaseAttributes() + getSumOfEquipedArmorAttributes();
-
-        return sumOftotalAttributes;
+        return this.characterDPS;
     }
 
     public int getSumOfEquipedArmorAttributes() {
@@ -223,6 +215,11 @@ public class Character extends PrimaryAttribute {
 
             }
         }
+
+    }
+
+    public void setCharacterDPS(double characterDPS) {
+        this.characterDPS = characterDPS;
 
     }
 }
