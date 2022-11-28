@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterTest {
 
-
     @Test
     void characterConstructor_levelWhenCreated_levelOne(){
 
@@ -147,8 +146,8 @@ class CharacterTest {
         HashMap<String, Integer> levelTwoRogueAttributes = new HashMap<>();
 
         //Act
-        levelTwoRogueAttributes.put("Strength", 2);
-        levelTwoRogueAttributes.put("Dexterity", 12);
+        levelTwoRogueAttributes.put("Strength", 3);
+        levelTwoRogueAttributes.put("Dexterity", 10);
         levelTwoRogueAttributes.put("Intelligence", 2);
 
         rogue.levelUp();

@@ -23,7 +23,6 @@ public class Rogue extends Character{
 
     }
 
-
     public boolean equipWeapon(SlotType aSlotType, Item anItem) throws InvalidWeaponException {
 
         if(aSlotType == SlotType.WEAPON)

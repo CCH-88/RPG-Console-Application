@@ -1,52 +1,41 @@
 public class Main {
     public static void main(String[] args) {
 
-        Weapon testWeapon = new Weapon(7, 1.1);
-        testWeapon.setName("Common Axe");
-        //testWeapon.setRequiredLvl(2);  //--- Test 1. Too high level
-        testWeapon.setRequiredLvl(1);
-        testWeapon.setSlotType(SlotType.WEAPON);
-        //testWeapon.setWeaponType(WeaponType.BOW);   //--- Test 3. Wrong type of weapon - bow
-        testWeapon.setWeaponType(WeaponType.AXE);
-        testWeapon.calculateWeaponDPS();
+        //An instance of a game...
 
+        Warrior johnTheImpaler = new Warrior();
+        johnTheImpaler.setName("John the impaler");
+        johnTheImpaler.levelUp();
 
-        Armor testPlateBody = new Armor();
-        testPlateBody.setName("Common Plate Body Armor");
-        //testPlateBody.setRequiredLvl(2); //--- Test 2. Too high level
-        testPlateBody.setRequiredLvl(1);
-        testPlateBody.setSlotType(SlotType.BODY);
-        //testPlateBody.setArmorType(ArmorType.CLOTH); //--- Test 4. Wrong type of armour - cloth
-        testPlateBody.setArmorType(ArmorType.PLATE);
-        testPlateBody.setArmorAttributes(new PrimaryAttribute(0,0,1));
+        Weapon commonAxe = new Weapon(7, 1.1);
+        commonAxe.setName("Common Axe");
+        commonAxe.setRequiredLvl(1);
+        commonAxe.setSlotType(SlotType.WEAPON);
+        commonAxe.setWeaponType(WeaponType.AXE);
+        commonAxe.calculateWeaponDPS();
 
-        Armor testPlateHelmet = new Armor();
-        testPlateHelmet.setName("Common Plate Helmet");
-        testPlateHelmet.setRequiredLvl(1);
-        testPlateHelmet.setSlotType(SlotType.HEAD);
-        testPlateHelmet.setArmorType(ArmorType.PLATE);
-        testPlateHelmet.setArmorAttributes(new PrimaryAttribute(1,0,3));
-
-        Warrior aWarrior = new Warrior();
-        aWarrior.setName("John the impaler");
-        aWarrior.levelUp();
-
+        Armor plateHelmet = new Armor();
+        plateHelmet.setName("Common Plate Helmet");
+        plateHelmet.setRequiredLvl(1);
+        plateHelmet.setSlotType(SlotType.HEAD);
+        plateHelmet.setArmorType(ArmorType.PLATE);
+        plateHelmet.setArmorAttributes(new PrimaryAttribute(1,0,3));
 
         try {
-            aWarrior.equipWeapon(SlotType.WEAPON,testWeapon); //Test 4 - returns true if everything OK...
+            johnTheImpaler.equipWeapon(SlotType.WEAPON, commonAxe);
         } catch (InvalidWeaponException e) {
             System.out.println(e);
         }
 
         try {
-            aWarrior.equipArmor(SlotType.BODY, testPlateBody); //Test 5 - returns true if everything OK
-            aWarrior.equipArmor(SlotType.HEAD, testPlateHelmet);
+            johnTheImpaler.equipArmor(SlotType.HEAD, plateHelmet);
         } catch (InvalidArmorException e) {
             System.out.println(e);
         }
 
-        aWarrior.calculateTotalAttributes();
-        System.out.println(aWarrior.getCharacterSheet());
+        johnTheImpaler.calculateTotalAttributes();
+
+        System.out.println(johnTheImpaler.getCharacterSheet());
 
     }
 
